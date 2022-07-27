@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local="clr-namespace:CVinRV"
+			 BindingContext="{x:Static local:ViewModelLocator.Main}"
+			 x:DataType="local:ViewModel"
+			 x:Class="CVinRV.MainPage">
+
+	<RefreshView IsRefreshing="{Binding IsRefreshing}"
+				 Command="{Binding RefreshCommand}">
+
+		<CollectionView SelectionMode="None"
+						ItemSizingStrategy="MeasureAllItems"
+						ItemsLayout="VerticalList"
+						ItemsSource="{Binding Items}">
+
+			<CollectionView.ItemTemplate>
+
+				<DataTemplate x:DataType="local:Item">
+
+					<Grid Margin="10"
+						  Padding="10"
+						  ColumnDefinitions="*, Auto"
+						  RowDefinitions="*, Auto"
+						  BackgroundColor="Transparent">
+
+						<BoxView Grid.Column="0"
+								 Grid.ColumnSpan="2"
+								 Grid.Row="0"
+								 Grid.RowSpan="2"
+								 CornerRadius="10"
+								 BackgroundColor="{DynamicResource Primary}" />
+
+						<Label Grid.Column="0"
+							   Grid.ColumnSpan="2"
+							   Grid.Row="0"
+							   Margin="10"
+							   BackgroundColor="Transparent"
+							   FontSize="Large"
+							   TextColor="{DynamicResource White}"
+							   Text="{Binding Name}" />
+
+						<Label Grid.Column="0"
+							   Grid.ColumnSpan="2"
+							   Grid.Row="1"
+							   Margin="10"
+							   BackgroundColor="Transparent"
+							   FontSize="Small"
+							   TextColor="{DynamicResource White}"
+							   Text="{Binding Description}" />
+
+						<Button Grid.Column="1"
+								Grid.Row="0"
+								Grid.RowSpan="2"
+								Margin="10"
+								BackgroundColor="{DynamicResource Primary}"
+								FontSize="Title"
+								TextColor="{StaticResource White}"
+								Text=">" />
+					</Grid>
+
+				</DataTemplate>
+
+			</CollectionView.ItemTemplate>
+
+		</CollectionView>
+
+	</RefreshView>
+
+</ContentPage>
